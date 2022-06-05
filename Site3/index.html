@@ -54,7 +54,7 @@
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-  	'user_id': useUserId.toSterin
+  	'user_id': useUserId
   }),
 }).then(res => res.json()).then(data => showData(data.data))
     
