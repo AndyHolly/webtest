@@ -53,6 +53,8 @@
         await liff.init({liffId:"1657191323-LGozVWWb"});
         if(!liff.isLoggedIn()){
             liff.login();
+            useUserId  = profile.userId
+            useUserId.toString
             console.log('tell to login')
           }else {
             await liff.getProfile().then(profile =>{
