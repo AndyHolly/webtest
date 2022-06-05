@@ -227,6 +227,7 @@ body: JSON.stringify({
         <h2 style="margin-bottom: 20px;"class="u-text u-text-default u-text-1">ข้อมูล</h2>
         <input class="datePicker"type="date" id="submitDate" name="submitDate">
         <script>
+          document.getElementById('submitDate').valueAsDate = new Date();
           function getDate(){
             return document.getElementById("submitDate").value;
           }
