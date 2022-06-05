@@ -28,10 +28,12 @@
       const liffId ='1657191323-a6wMQYY2'
       const userId =''
       function main(){
+        console.log('main runned')
         liff.init({liffId:liffId});
         liff.ready.then(()=>{
           if(!iff.isLoggedIn()){
             liff.login();
+            console.log('tell to login')
           }
           liff.getProfile().then(profile =>{
             console.log(profile)
