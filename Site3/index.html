@@ -29,16 +29,16 @@
       async function main(){
         console.log('main runned')
         await liff.init({liffId:"1657191323-a6wMQYY2"});
-        liff.ready.then(()=>{
-          if(!iff.isLoggedIn()){
+        if(!liff.isLoggedIn()){
             liff.login();
             console.log('tell to login')
-          }
-          liff.getProfile().then(profile =>{
+          }else {
+            liff.getProfile().then(profile =>{
             console.log(profile)
             userId = profile.userId
           })
-        });
+          
+          }
       }
       main();
       function showData(data) {
