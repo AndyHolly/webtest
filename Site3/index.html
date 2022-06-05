@@ -25,7 +25,7 @@
   <body data-home-page="ระบบลงทะเบียนผู้ใช้งาน.html" data-home-page-title="ระบบลงทะเบียนผู้ใช้งาน" class="u-body u-xl-mode">
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
-      const userId =''
+      
       async function main(){
         console.log('main runned')
         await liff.init({liffId:"1657191323-a6wMQYY2"});
@@ -35,9 +35,8 @@
           }else {
             liff.getProfile().then(profile =>{
             console.log("profile : "+profile)
-            console.log("userId" + profile.userId)
-            userId = profile.userId
-            console.log("userID : "+userId)
+            let useUserId = profile.userId
+           console.log("userId : "+useUserId)
           })
           
           }
@@ -55,7 +54,7 @@
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-  	'user_id': userId
+  	'user_id': useUserId
   }),
 }).then(res => res.json()).then(data => showData(data.data))
     
@@ -65,7 +64,7 @@
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-  	"user_id": userId,
+  	"user_id": useUserId,
     "studentid": studentId
   }),
 }).then(res => res.json()).then(data => {
