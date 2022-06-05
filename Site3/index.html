@@ -34,7 +34,8 @@
             console.log('tell to login')
           }else {
             liff.getProfile().then(profile =>{
-            console.log(profile)
+            console.log("profile : "+profile)
+            console.log("userId" + profile.userId)
             userId = profile.userId
             console.log("userID : "+userId)
           })
