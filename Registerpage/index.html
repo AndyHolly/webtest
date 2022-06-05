@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="​Get Started">
+    <meta name="description" content="">
+    <title>ระบบลงทะเบียนผู้ใช้งาน</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+<link rel="stylesheet" href="ระบบลงทะเบียนผู้ใช้งาน.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.11.3, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="ระบบลงทะเบียนผู้ใช้งาน">
+    <meta property="og:type" content="website">
+  </head>
+  <body data-home-page="ระบบลงทะเบียนผู้ใช้งาน.html" data-home-page-title="ระบบลงทะเบียนผู้ใช้งาน" class="u-body u-xl-mode">
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+      let useUserId =''
+      function showData(data) {
+        let studentList = document.querySelector('#studentList');
+        data.forEach(val => {
+          let stuList = document.createElement('div');
+          stuList.innerText = `${val.firstname} ${val.lastName}`;
+          studentList.appendChild(stuList);
+        })
+      }
+      async function main(){
+        console.log('main runned')
+        await liff.init({liffId:"1657191323-a6wMQYY2"});
+        if(!liff.isLoggedIn()){
+            liff.login();
+            useUserId  = profile.userId
+            useUserId.toString
+            console.log('tell to login')
+          }else {
+            await liff.getProfile().then(profile =>{
+            console.log("profile : "+profile)
+            useUserId  = profile.userId
+            useUserId.toString
+           console.log("userId NAJA EIEI : "+useUserId)
+          })
+          }
+          await fetch('https://123b-2001-44c8-4510-2113-6d03-9297-62c4-ff55.ngrok.io/lineliff/register/getStudentFromUid', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+  	"user_id": useUserId
+  }),
+}).then(res => res.json()).then(data => showData(data.data))
+      }
+      main();
+        
+     function submitReg(){
+       studentId = document.getElementById("studentId").value
+      fetch('https://123b-2001-44c8-4510-2113-6d03-9297-62c4-ff55.ngrok.io/lineliff/register/', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+  	"user_id": useUserId,
+    "studentid": studentId
+  }),
+}).then(res => res.json()).then(data => {
+        if(data.status == "ok"){
+        alert('ลงทะเบียนเรียบร้อย');
+        window.location.reload();
+      }else{
+        alert('ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+        window.location.reload();
+      }});
+      
+     }
+
+    </script>
+    <section class="u-align-center u-clearfix u-gradient u-section-1" id="carousel_8892">
+      <input class="form-control" type="hidden" id="userid" name="userid" /> <br />
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-align-center u-container-style u-group u-radius-30 u-shape-round u-white u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <div class="u-expanded-width u-form u-form-1">
+              <form action="#" method="POST" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" source="email" name="form" style="padding: 0px;">
+                <div class="u-form-group u-form-name">
+                  <label for="studentId" class="u-label">รหัสนักเรียน</label>
+                  <input type="number" placeholder="กรอกรหัสนักเรียน" id="studentId" name="studentId" class="u-border-2 u-border-palette-4-light-3 u-input u-input-rectangle u-palette-4-light-3 u-radius-10" required>
+                </div>
+                <div class="u-align-right u-form-group u-form-submit">
+                  <a href="#" class="u-active-palette-4-light-1 u-border-5 u-border-active-palette-4-light-1 u-border-hover-palette-4-light-1 u-border-palette-4-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-4-light-1 u-palette-4-base u-radius-10 u-btn-1"> ลงทะเบียน</a>
+                  <input type="submit" onclick="submitReg()" class="u-form-control-hidden">
+                </div>
+                <!-- <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+                <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div> -->
+                <input type="hidden" value="" name="recaptchaResponse">
+              </form>
+            </div>
+          </div>
+        </div>
+        <h3>รายชื่อนักเรียนที่ทำการลงทะเบียนแล้ว
+          <ul id="studentList">
+          </ul>
+        </h3>
+        
+      </div>
+    </section>
+  </body>
+</html>
