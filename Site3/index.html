@@ -25,11 +25,10 @@
   </head>
   <body data-home-page="ระบบลงทะเบียนผู้ใช้งาน.html" data-home-page-title="ระบบลงทะเบียนผู้ใช้งาน" class="u-body u-xl-mode">
     <script>
-      const liffId ='1657191323-a6wMQYY2'
       const userId =''
       function main(){
         console.log('main runned')
-        liff.init({liffId:liffId});
+        await liff.init({liffId:"1657191323-a6wMQYY2"});
         liff.ready.then(()=>{
           if(!iff.isLoggedIn()){
             liff.login();
