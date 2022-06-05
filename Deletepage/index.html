@@ -63,7 +63,7 @@
            console.log("userId NAJA EIEI : "+useUserId)
           })
           }
-          await fetch('https://123b-2001-44c8-4510-2113-6d03-9297-62c4-ff55.ngrok.io/lineliff/register/getStudentFromUid', {
+          await fetch('http://asclb.dynu.com:3000/lineliff/register/getStudentFromUid', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -73,7 +73,7 @@
       }
       main();
       async function deleteData(id){
-       await fetch('https://123b-2001-44c8-4510-2113-6d03-9297-62c4-ff55.ngrok.io/lineliff/deletes/', {
+       await fetch('http://asclb.dynu.com:3000/lineliff/deletes/', {
   method: 'DELETE',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
