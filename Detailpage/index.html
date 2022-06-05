@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="ข้อมูล">
+    <meta name="description" content="">
+    <title>ข้อมูล</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Contact.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.11.3, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Contact">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-overlap u-xl-mode">
+    <script>
+      let studentId = 0
+
+      async function loadIntoTableCheckin(table,id,dateInput){
+        console.log("Checkin Date : "+dateInput)
+        const tableHead = table.querySelector("thead");
+        const tableBody = table.querySelector("tbody");
+        const response = await fetch('https://3ef8-2001-44c8-444f-67fe-adf4-3bc-e25d-da8a.ngrok.io/lineliff/student/getStudentCheckin', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+  	"user_id": "U132cb3fd76d251de34bdbe223f5a5605",
+    "studentid": id,
+    "trandate" : dateInput
+  }),
+})
+        const { headers , rows } = await response.json();
+        tableHead.innerHTML = "<tr></tr>";
+        tableBody.innerHTML = "";
+
+        for(const headerText of headers){
+          const headerElement = document.createElement("th");
+
+          headerElement.textContent = headerText;
+          tableHead.querySelector("tr").appendChild(headerElement);
+        }
+
+        for (const row of rows){
+          const rowElement = document.createElement("tr");
+
+          for(const cellText of row){
+            const cellElement = document.createElement("td");
+            cellElement.textContent = cellText;
+            rowElement.appendChild(cellElement);
+          }
+          tableBody.appendChild(rowElement);
+        }
+      }
+      async function loadIntoTableBalance(table,id,dateInput){
+        const tableHead = table.querySelector("thead");
+        const tableBody = table.querySelector("tbody");
+        const response = await fetch('https://3ef8-2001-44c8-444f-67fe-adf4-3bc-e25d-da8a.ngrok.io/lineliff/student/getMemberNameBalanceTotalDepositAndWithdraw', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    "user_id": "U132cb3fd76d251de34bdbe223f5a5605",
+    "studentid": id,
+    "trandate" : dateInput
+  }),
+})
+        const { headers , rows } = await response.json();
+        tableHead.innerHTML = "<tr></tr>";
+        tableBody.innerHTML = "";
+
+        for(const headerText of headers){
+          const headerElement = document.createElement("th");
+
+          headerElement.textContent = headerText;
+          tableHead.querySelector("tr").appendChild(headerElement);
+        }
+
+        for (const row of rows){
+          const rowElement = document.createElement("tr");
+
+          for(const cellText of row){
+            const cellElement = document.createElement("td");
+            cellElement.textContent = cellText;
+            rowElement.appendChild(cellElement);
+          }
+          tableBody.appendChild(rowElement);
+        }
+      }
+      async function loadIntoTableFood(table,id,dateInput){
+      const tableHead = table.querySelector("thead");
+      const tableBody = table.querySelector("tbody");
+      const response = await fetch('https://3ef8-2001-44c8-444f-67fe-adf4-3bc-e25d-da8a.ngrok.io/lineliff/student/getFoodcardTransaction', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+  "user_id": "U132cb3fd76d251de34bdbe223f5a5605",
+    "studentid": id,
+    "trandate" : dateInput
+}),
+})
+      const { headers , rows } = await response.json();
+      tableHead.innerHTML = "<tr></tr>";
+      tableBody.innerHTML = "";
+
+      for(const headerText of headers){
+        const headerElement = document.createElement("th");
+
+        headerElement.textContent = headerText;
+        tableHead.querySelector("tr").appendChild(headerElement);
+      }
+
+      for (const row of rows){
+        const rowElement = document.createElement("tr");
+
+        for(const cellText of row){
+          const cellElement = document.createElement("td");
+          cellElement.textContent = cellText;
+          rowElement.appendChild(cellElement);
+        }
+        tableBody.appendChild(rowElement);
+      }
+    }
+      async function loadIntoTableMart(table,id,dateInput){
+      const tableHead = table.querySelector("thead");
+      const tableBody = table.querySelector("tbody");
+      const response = await fetch('https://3ef8-2001-44c8-444f-67fe-adf4-3bc-e25d-da8a.ngrok.io/lineliff/student/getMinimarttransaction', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+  "user_id": "U132cb3fd76d251de34bdbe223f5a5605",
+    "studentid": id,
+    "trandate" : dateInput
+}),
+})
+      const { headers , rows } = await response.json();
+      tableHead.innerHTML = "<tr></tr>";
+      tableBody.innerHTML = "";
+
+      for(const headerText of headers){
+        const headerElement = document.createElement("th");
+
+        headerElement.textContent = headerText;
+        tableHead.querySelector("tr").appendChild(headerElement);
+      }
+
+      for (const row of rows){
+        const rowElement = document.createElement("tr");
+
+        for(let cellText of row){
+          const cellElement = document.createElement("td");
+          cellElement.textContent = cellText;
+          rowElement.appendChild(cellElement);
+        }
+        tableBody.appendChild(rowElement);
+      }
+    }
+
+      function submitId(id){
+        let dateInput = getDate();
+        loadDataBalance(id,dateInput)
+        loadDataCheckin(id,dateInput)
+        loadDataFood(id,dateInput)
+        loadDataMart(id,dateInput)
+      }
+      function showData(data) {
+        let studentList = document.querySelector('#studentList');
+        data.forEach((val,index) => {
+          let nameDiv = document.querySelector('#showName');
+          let button = document.createElement('button');
+          button.innerText = `${val.firstname} ${val.lastName}`
+          button.className = 'btnClass'
+          button.id = val.studentid
+          button.type = "submit"
+          button.addEventListener("click", function () {
+            submitId(val.studentid)
+            console.log("click")
+});
+          button.value = index
+          nameDiv.appendChild(button)
+        })
+      }
+      fetch('https://3ef8-2001-44c8-444f-67fe-adf4-3bc-e25d-da8a.ngrok.io/lineliff/register/getStudentFromUid', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+  	'user_id': 'U132cb3fd76d251de34bdbe223f5a5605'
+  }),
+}).then(res => res.json()).then(data => showData(data.data))
+    console.log(studentId)
+    </script>
+    <section class="u-align-center u-clearfix u-gradient u-section-1" id="carousel_c529">
+      <input id="idForSearch" value="0"type="hidden">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h2 style="margin-bottom: 20px;"class="u-text u-text-default u-text-1">ข้อมูล</h2>
+        <input class="datePicker"type="date" id="submitDate" name="submitDate">
+        <script>
+          function getDate(){
+            return document.getElementById("submitDate").value;
+          }
+          
+        </script>
+        <div class="btn"id="showName"> เลือกชื่อนักเรียน : </div>
+        <p id ="studentList" class="u-text u-text-default u-text-2"></p>
+        <p id ="stuName" class="u-text u-text-default u-text-3"></p>
+        <h3 class="u-text u-text-default u-text-4">ข้อมูลการเข้าเรียน</h3>
+        <div id="checkinDiv" style="overflow-y: auto;overflow-x: auto;height:auto;"class="u-expanded-width u-table u-table-responsive u-table-1">
+          <table id="checkinTable" class="u-table-entity">
+            <thead class="u-palette-4-base u-table-header u-table-header-1">
+              <tr style="height: 57px;">
+              </tr>
+            </thead>
+            <tbody class="u-table-body">
+            </tbody>
+          </table>
+          <script>
+            
+      function loadDataCheckin(id,dateInput){
+        loadIntoTableCheckin(document.querySelector("#checkinTable"),id,dateInput);
+      } 
+          </script>
+        </div>
+        <h3 class="u-text u-text-default u-text-5">ข้อมูลการใช้บัตร</h3>
+        <div id="balanceDiv"style="overflow-y: auto;overflow-x: auto;height:auto;"class="u-expanded-width u-table u-table-responsive u-table-2">
+          <table id="balanceTrans"class="u-table-entity">
+            <thead class="u-palette-4-base u-table-header u-table-header-2">
+              <tr style="height: 55px;">
+              </tr>
+            </thead>
+            <tbody class="u-table-body">
+              <tr style="height: 90px;">
+              </tr>
+            </tbody>
+          </table>
+          <script>
+              
+      function loadDataBalance(id,dateInput){
+        loadIntoTableBalance(document.querySelector("#balanceTrans"),id,dateInput);
+      }
+          </script>
+        </div>
+        <h3 class="u-text u-text-default u-text-6">ข้อมูลการใช้จ่ายในโรงอาหาร</h3>
+        <div id="foodDiv"style="overflow-y: auto;overflow-x: auto;height:auto;"class="u-expanded-width u-table u-table-responsive u-table-3">
+          <table id="foodCardTrans" class="u-table-entity">
+            <thead class="u-palette-4-base u-table-header u-table-header-3">
+              <tr style="height: 21px;">
+              </tr>
+            </thead>
+            <tbody class="u-table-body">
+            </tbody>
+          </table>
+          <script>
+            
+    function loadDataFood (id,dateInput){
+      loadIntoTableFood(document.querySelector("#foodCardTrans"),id,dateInput);
+    }
+        </script>
+        </div>
+        <h3 class="u-text u-text-default u-text-7">ข้อมูลการใช้ร้านสหการณ์</h3>
+        <div id="martDiv"style="overflow-y: auto;overflow-x: auto;height:auto;"class="u-expanded-width u-table u-table-responsive u-table-4">
+          <table id ="minimartTrans"class="u-table-entity">
+            <thead class="u-palette-4-base u-table-header u-table-header-4">
+            </thead>
+            <tbody class="u-table-body">
+            </tbody>
+          </table>
+          <script>
+            
+    function loadDataMart(id,dateInput){
+      loadIntoTableMart(document.querySelector("#minimartTrans"),id,dateInput);
+    }
+        </script>
+        </div>
+      </div>
+    </section>
+    
+  </body>
+</html>
