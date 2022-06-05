@@ -33,9 +33,10 @@
             liff.login();
             console.log('tell to login')
           }else {
-            liff.getProfile().then(profile =>{
+            await liff.getProfile().then(profile =>{
             console.log("profile : "+profile)
             useUserId  = profile.userId
+            useUserId.toString
            console.log("userId NAJA EIEI : "+useUserId)
           })
           
