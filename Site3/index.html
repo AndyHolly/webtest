@@ -26,6 +26,14 @@
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
       let useUserId =''
+      function showData(data) {
+        let studentList = document.querySelector('#studentList');
+        data.forEach(val => {
+          let stuList = document.createElement('div');
+          stuList.innerText = `${val.firstname} ${val.lastName}`;
+          studentList.appendChild(stuList);
+        })
+      }
       async function main(){
         console.log('main runned')
         await liff.init({liffId:"1657191323-a6wMQYY2"});
@@ -39,20 +47,8 @@
             useUserId.toString
            console.log("userId NAJA EIEI : "+useUserId)
           })
-          
           }
-      }
-      function showData(data) {
-        let studentList = document.querySelector('#studentList');
-        data.forEach(val => {
-          let stuList = document.createElement('div');
-          stuList.innerText = `${val.firstname} ${val.lastName}`;
-          studentList.appendChild(stuList);
-        })
-      }
-      main();
-      async function getStuId(){
-        await fetch('https://123b-2001-44c8-4510-2113-6d03-9297-62c4-ff55.ngrok.io/lineliff/register/getStudentFromUid', {
+          await fetch('https://123b-2001-44c8-4510-2113-6d03-9297-62c4-ff55.ngrok.io/lineliff/register/getStudentFromUid', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -60,9 +56,8 @@
   }),
 }).then(res => res.json()).then(data => showData(data.data))
       }
-      
-      
-    
+      main();
+        
      function submitReg(){
        studentId = document.getElementById("studentId").value
       fetch('https://123b-2001-44c8-4510-2113-6d03-9297-62c4-ff55.ngrok.io/lineliff/register/', {
