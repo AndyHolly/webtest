@@ -36,6 +36,7 @@
             liff.getProfile().then(profile =>{
             console.log(profile)
             userId = profile.userId
+            console.log("userID : "+userId)
           })
           
           }
@@ -49,7 +50,7 @@
           studentList.appendChild(stuList);
         })
       }
-      fetch('https://3ef8-2001-44c8-444f-67fe-adf4-3bc-e25d-da8a.ngrok.io/lineliff/register/getStudentFromUid', {
+      fetch('https://123b-2001-44c8-4510-2113-6d03-9297-62c4-ff55.ngrok.io/lineliff/register/getStudentFromUid', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -59,7 +60,7 @@
     
      function submitReg(){
        studentId = document.getElementById("studentId").value
-      fetch('https://3ef8-2001-44c8-444f-67fe-adf4-3bc-e25d-da8a.ngrok.io/lineliff/register/', {
+      fetch('https://123b-2001-44c8-4510-2113-6d03-9297-62c4-ff55.ngrok.io/lineliff/register/', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
