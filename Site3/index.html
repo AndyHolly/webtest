@@ -25,6 +25,8 @@
   </head>
   <body data-home-page="ระบบลงทะเบียนผู้ใช้งาน.html" data-home-page-title="ระบบลงทะเบียนผู้ใช้งาน" class="u-body u-xl-mode">
     <script>
+      const liffId ='1657191323-a6wMQYY2'
+      const userId =''
       function main(){
         liff.init({liffId:liffId});
         liff.ready.then(()=>{
@@ -33,6 +35,7 @@
           }
           liff.getProfile().then(profile =>{
             console.log(profile)
+            userId = profile.userId
           })
         });
       }
@@ -49,7 +52,7 @@
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-  	'user_id': 'U132cb3fd76d251de34bdbe223f5a5605'
+  	'user_id': userId
   }),
 }).then(res => res.json()).then(data => showData(data.data))
     
@@ -59,7 +62,7 @@
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-  	"user_id": "U132cb3fd76d251de34bdbe223f5a5605",
+  	"user_id": userId,
     "studentid": studentId
   }),
 }).then(res => res.json()).then(data => {
