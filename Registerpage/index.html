@@ -52,6 +52,7 @@
           }
           await fetch('http://asclb.dynu.com:3000/lineliff/register/getStudentFromUid', {
   method: 'POST',
+  mode: 'cors',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
   	"user_id": useUserId
@@ -64,6 +65,7 @@
        studentId = document.getElementById("studentId").value
       fetch('http://asclb.dynu.com:3000/lineliff/register/', {
   method: 'POST',
+  mode: 'cors',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
   	"user_id": useUserId,
