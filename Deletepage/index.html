@@ -86,8 +86,11 @@ console.log("deleted")
 window.location.reload();
       }
       function submitId(id){
-        confirm("คุณต้องการที่จะลบข้อมูลการลงทะเบียนหรือไม่?")
-        deleteData(id);
+        if (confirm("คุณต้องการที่จะลบข้อมูลการลงทะเบียนหรือไม่?") == true) {
+          deleteData(id);
+        } else {
+        text = "ยกเลิก";
+        } 
       }
     </script>
     <section class="u-align-center u-clearfix u-gradient u-section-1" id="carousel_c529">
