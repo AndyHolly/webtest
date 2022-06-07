@@ -64,7 +64,7 @@
            console.log("userId NAJA EIEI : "+useUserId)
           })
           }
-          await fetch('http://asclb.dynu.com:3000/lineliff/register/getStudentFromUid', {
+          await fetch('https://asclb.dynu.com:3000//lineliff/register/getStudentFromUid', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -74,7 +74,7 @@
       }
       main();
       async function deleteData(id){
-       await fetch('http://asclb.dynu.com:3000/lineliff/deletes/', {
+       await fetch('https://asclb.dynu.com:3000//lineliff/deletes/', {
   method: 'DELETE',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
